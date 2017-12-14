@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="StrategyMapper" >
+  <resultMap id="BaseResultMap" type="com.NGEmobi.model.Strategy" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="app_name" property="appName" jdbcType="VARCHAR" />
+    <result column="n_back_new_adx_banner_key" property="nBackNewAdxBannerKey" jdbcType="VARCHAR" />
+    <result column="n_back_new_adx_native_key_ecpm" property="nBackNewAdxNativeKeyEcpm" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_change_strategy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.NGEmobi.model.Strategy" >
+    insert into t_change_strategy (id, app_name, n_back_new_adx_banner_key, 
+      n_back_new_adx_native_key_ecpm, status)
+    values (#{id,jdbcType=INTEGER}, #{appName,jdbcType=VARCHAR}, #{nBackNewAdxBannerKey,jdbcType=VARCHAR}, 
+      #{nBackNewAdxNativeKeyEcpm,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.NGEmobi.model.Strategy" >
+    update t_change_strategy
+    set app_name = #{appName,jdbcType=VARCHAR},
+      n_back_new_adx_banner_key = #{nBackNewAdxBannerKey,jdbcType=VARCHAR},
+      n_back_new_adx_native_key_ecpm = #{nBackNewAdxNativeKeyEcpm,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, app_name, n_back_new_adx_banner_key, n_back_new_adx_native_key_ecpm, status
+    from t_change_strategy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByStatus" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, app_name, n_back_new_adx_banner_key, n_back_new_adx_native_key_ecpm, status
+    from t_change_strategy
+    where status = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, app_name, n_back_new_adx_banner_key, n_back_new_adx_native_key_ecpm, status
+    from t_change_strategy
+  </select>
+</mapper>
